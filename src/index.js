@@ -7,6 +7,19 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ls from 'local-storage';
 
 
+class NewTitle extends React.PureComponent {
+  render () {
+    return (
+      <>
+        <Helmet>
+          <title>Elapsify</title>
+        </Helmet>
+      </>
+    )
+  }
+}
+
+
 class Title extends React.Component {
     render() {
         let time = 'Elapsify'
@@ -312,11 +325,12 @@ class ToDo extends React.Component {
   render(){
     return(
       <div style={{padding: 20}}>
-         <Title
-             blurTitle={this.blurTitle.bind(this)}
-             curTime = {this.state.curTime}
-             activeStarts = {this.state.activeStarts}
-         />
+         {/*<Title*/}
+         {/*    blurTitle={this.blurTitle.bind(this)}*/}
+         {/*    curTime = {this.state.curTime}*/}
+         {/*    activeStarts = {this.state.activeStarts}*/}
+         {/*/>*/}
+         <NewTitle />
          <h3 style={{width: 500, textAlign: "center"}}>
                   Elapsify
          </h3>
