@@ -184,7 +184,8 @@ class ToDo extends React.Component {
   componentDidMount() {
       setInterval(() => {
         const newDate = new Date()
-        if(this.state.checked && !(this.state.curTime.getDay() === this.state.date)) {
+        // if(this.state.checked && !(this.state.curTime.getDay() === this.state.date)) {
+        if(!(this.state.curTime.getDay() === this.state.date)) {
             const contentList = ['100 push-ups', '100 lunges', '3 mile run',
             'shower', 'read Bible', 'journal', 'eat Chia', 'make Chia', '69 minutes research', '10 pages coding interview']
             const newList = this.state.entries.concat(contentList)
