@@ -187,7 +187,7 @@ class ToDo extends React.Component {
         // if(this.state.checked && !(this.state.curTime.getDay() === this.state.date)) {
         if(!(this.state.curTime.getDay() === this.state.date)) {
             const contentList = ['100 push-ups', '100 lunges', '3 mile run',
-            'shower', 'read Bible', 'journal', 'eat Chia', 'make Chia', '69 minutes research', '10 pages coding interview']
+            'shower', 'read Bible', 'journal', 'eat Chia', 'make Chia', '69 minutes research']
             const newList = this.state.entries.concat(contentList)
             const newDates = this.state.startTimes.concat(new Array(contentList.length).fill(newDate))
             const newActives = activeLengthen(this.state.activeStarts, contentList)
