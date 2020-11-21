@@ -1,17 +1,107 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:focus {
+  outline: none;
 }
 
-.cross{
+.react-tabs {
+  display: flex;
+}
+
+.react-tabs__tab-list {
+  height: calc(100vh - 5em);
+  background-color: whitesmoke;
+  padding: 2.5em 2em;
+}
+
+.react-tabs__tab {
+  padding: 3px;
+}
+
+.react-tabs__tab:hover {
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+}
+
+.cross {
   text-decoration: line-through;
+}
+
+.react-datepicker-popper {
+  z-index: 10!important;
+}
+
+.due-date {
+  height: 30px;
+}
+
+.submit, .finished, .clear, .show {
+  background-color: transparent;
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid grey;
+  color: gray;
+  max-width: 10rem;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.finished:hover, .clear:hover, .submit:hover {
+  color: black;
+  border-color: black;
+}
+
+.show {
+  width: 4rem;
+}
+
+.col input {
+  height: 100%;
+  margin: 0;
+}
+
+input {
+  font-family: 'Open Sans', sans-serif;
+}
+
+button {
+  font-family: 'Open Sans', sans-serif;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}
+
+
+
+.submit {
+  max-width: 4rem;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+
+.col {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
 }
