@@ -68,6 +68,7 @@ input[type="text" i] {
 }
 
 .due-date {
+  text-align: center;
   max-width: 8.5rem;
   height: 30px;
   /*padding-left: 10em;*/
