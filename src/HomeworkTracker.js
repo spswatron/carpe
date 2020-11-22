@@ -282,7 +282,7 @@ class HomeworkTracker extends React.Component {
         var utcDate = new Date(this.state.date.getTime() + this.state.date.getTimezoneOffset() * 60000);
         let newDate = [utcDate];
         if(this.state.weekly){
-            let later = this.state.date
+            let later = new Date(this.state.date.getTime())
             later.setFullYear(later.getFullYear() + 1)
             newDate = new RRule({
               freq: RRule.WEEKLY,
