@@ -8,7 +8,7 @@ class NewTitle extends React.PureComponent {
     return (
       <>
         <Helmet>
-          <title>Message Center</title>
+          <title>Notes To Self</title>
         </Helmet>
       </>
     )
@@ -62,7 +62,7 @@ class TextEditor extends React.Component {
          <NewTitle />
          <div>
          <h3 className="title" style={{width: 500, textAlign: "center"}}>
-                  Message Center
+                  Notes To Self
          </h3>
           <TextEditor />
           </div>
