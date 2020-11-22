@@ -86,11 +86,12 @@ input[type="text" i] {
 
 .submit, .finished, .clear, .show {
   background-color: transparent;
+  height: 44px;
   width: 100%;
   padding: 5px;
   border-radius: 5px;
-  border: 1px solid black;
-  color: black;
+  border: 1px solid gray;
+  color: gray;
   max-width: 10rem;
   font-family: 'Open Sans', sans-serif;
 }
@@ -102,6 +103,7 @@ input[type="text" i] {
   border-top-right-radius: 0;
   max-width: 5rem;
   align-self: center;
+  color: black;
 }
 
 .morning-routine {
@@ -136,11 +138,13 @@ input[type="text" i] {
 
 .list.row {
   margin-bottom: 10px;
+  align-items: center;
   flex-wrap: wrap;
 }
 
 .finished:hover, .clear:hover, .submit:hover {
-  color: grey;
+  color: white;
+  background-color: gray;
   border-color: grey;
 }
 
@@ -156,7 +160,7 @@ input[type="text" i] {
 button, input {
   font-family: 'Open Sans', sans-serif;
   font-size: 1rem;
-  border-width: 1px;
+  border: 1px solid gray;
 }
 
 button:hover {
@@ -172,15 +176,18 @@ button:focus {
 /*  border: 1px solid gray;*/
 /*}*/
 
-.gray {
-  color: gray;
-  border: 1px solid gray;
-  /*background-color: gray;*/
-}
+/*.gray {*/
+/*  color: gray;*/
+/*  border: 1px solid gray;*/
+/*  !*background-color: gray;*!*/
+/*}*/
 
-.gray:hover {
-  cursor: default;
-}
+/*.gray:hover {*/
+/*  cursor: default;*/
+/*   color: gray;*/
+/*  border: 1px solid gray;*/
+/*  background-color: transparent;*/
+/*}*/
 
 .submit {
   max-width: 5rem;

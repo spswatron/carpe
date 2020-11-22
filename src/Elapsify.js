@@ -190,7 +190,6 @@ class ToDo extends React.Component {
   }
 
   componentDidMount() {
-      console.log(this.state)
       setInterval(() => {
         const newDate = new Date()
         // if(this.state.checked && !(this.state.curTime.getDay() === this.state.date)) {
@@ -449,6 +448,7 @@ function maintainActive(list, item){
 }
 
 function fullTimeConvert(elapsed) {
+      console.log(elapsed)
       const seconds = toTimeString(returnTime(elapsed, 'second'))
       const minutes = toTimeString(returnTime(elapsed, 'minute'))
       const hours = toTimeString(returnTime(elapsed, 'hour'))

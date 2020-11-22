@@ -7,6 +7,7 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 import moment from 'moment';
 import ls from 'local-storage';
 import { Helmet } from 'react-helmet'
+import { RRule, RRuleSet, rrulestr } from 'rrule'
 
 
 class Title extends React.PureComponent {
@@ -43,14 +44,13 @@ class Input extends React.Component {
                 <input style={{marginLeft: '7px'}}
                     className="col form-check-input"
                        type="checkbox"
-                       // value={this.props.checked}
-                       // onChange={() => this.props.checkChange()}
+                       value={this.props.weekly}
+                       onChange={() => this.props.weeklyChange()}
                        id="defaultCheck1"/>
-                    <button className={"show"}>
                     <label style={{marginLeft: '3px'}} className="col weekly" htmlFor="defaultCheck1">
                        Weekly
                     </label>
-                    </button>
+
       </div>
       </div>
     );
@@ -263,6 +263,7 @@ class HomeworkTracker extends React.Component {
     this.state = {
       content: '',
       checked: false,
+      weekly: false,
       ogDate: newDate,
       date: newDate,
       todos: ls.get('todos') || [],
@@ -274,22 +275,22 @@ class HomeworkTracker extends React.Component {
       options: ['due(soonest)', 'due(latest)', 'assignment length'],
       eventList: ls.get('eventList') || []
     };
-    // this.state = {
-    //   entries: ls.get('entries') || [],
-    //   content: "",
-    //   checked: false,
-    //   startTimes: dParse(ls.get('startTimes')) || [],
-    //   activeStarts: dParse(ls.get('activeStarts')) || [],
-    //   stopTimes: dParse(ls.get('stopTimes')) || [],
-    //   curTime: newDate,
-    //   date: newDate.getDay(),
-    //   classes: ls.get('classes') || [],
-    //   ranger: ls.get('ranger') || []
-    // };
   }
   handleSubmit() {
     if(this.state.content !== '' && this.state.date > this.state.ogDate) {
         const newList = this.state.todos.concat(this.state.content)
+        var utcDate = new Date(this.state.date.getTime() + this.state.date.getTimezoneOffset() * 60000);
+        let newDate = [utcDate];
+        if(this.state.weekly){
+            let later = this.state.date
+            later.setFullYear(later.getFullYear() + 1)
+            newDate = new RRule({
+              freq: RRule.WEEKLY,
+              dtstart: utcDate,
+              until: new Date(later.getTime() + later.getTimezoneOffset() * 60000)
+            }).all()
+        }
+
         const newDues = this.state.dues.concat(this.state.date)
         const newActives = this.state.activeStarts.concat(this.state.date).concat(this.state.content)
         const newClasses = this.state.classes.concat('un-crossed')
@@ -300,12 +301,7 @@ class HomeworkTracker extends React.Component {
         let dt = new Date(this.state.date.getTime());
         dt.setHours(dt.getHours() - 2);
         const newEvents = this.state.eventList.concat(
-            {
-              id: this.state.ranger.length - 1,
-              title: this.state.content,
-              start: dt,
-              end: this.state.date
-            })
+            newDate.map(j => toEvent(this.state, j)))
         this.setState({
             todos: newList,
             content: "",
@@ -344,6 +340,12 @@ class HomeworkTracker extends React.Component {
        });
   }
 
+  weeklyChange() {
+      this.setState({
+          weekly: !this.state.weekly
+      })
+  }
+
   checkChange(){
       const opp = !this.state.checked
       let newRanger;
@@ -373,7 +375,7 @@ class HomeworkTracker extends React.Component {
   }
 
   clear(i) {
-      const new_events = eventRemove(this.state.eventList, this.state.todos[i])
+      const new_events = eventRemove(this.state.eventList, i)
       const new_entries = removeIndex(this.state.todos, i)
       const new_actives = maintainActive(this.state.activeStarts, this.state.dues[i])
       const new_dues = removeIndex(this.state.dues, i)
@@ -430,6 +432,8 @@ class HomeworkTracker extends React.Component {
                 ogDate = {this.state.ogDate}
                 date = {this.state.date}
                 dateChange = {this.dateChange.bind(this)}
+                weekly = {this.state.weekly}
+                weeklyChange = {this.weeklyChange.bind(this)}
               />
               <div style ={{display: 'block', width: 622}}>
                   <Submit
@@ -500,11 +504,13 @@ function timeConvert(timeString) {
     }
 }
 
-function eventRemove(events, item){
+function eventRemove(events, id){
     let i
     let newList = []
+    console.log("id: " + id.toString())
+    console.log(events)
     for (i = 0; i < events.length; i++) {
-        if(events[i].title !== item){
+        if(events[i].id !== id){
             newList = newList.concat(events[i])
         }
     }
@@ -520,4 +526,14 @@ function dParse(list){
     }
 }
 
+function toEvent(state, date) {
+   let dt = new Date(date.getTime());
+   dt.setHours(dt.getHours() - 2);
+   return {
+       id: state.ranger.length,
+       title: state.content,
+       start: dt,
+       end: date
+   }
+}
 export default HomeworkTracker;
