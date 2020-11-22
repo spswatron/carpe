@@ -142,6 +142,16 @@ input[type="text" i] {
   flex-wrap: wrap;
 }
 
+.tox-tinymce {
+  max-width: 600px;
+  max-height: 400px;
+}
+
+.tox .tox-statusbar {
+  height: 0!important;
+  border-top: 0 solid transparent!important;
+}
+
 .finished:hover, .clear:hover, .submit:hover {
   color: white;
   background-color: gray;

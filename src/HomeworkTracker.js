@@ -28,6 +28,7 @@ class Input extends React.Component {
       <div className="homework-input row">
       <input type="text"
              className={"to-do col"}
+             style = {{width: 300}}
                placeholder="Todo..."
                aria-label="Todo"
                aria-describedby="basic-addon2"

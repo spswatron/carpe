@@ -4,6 +4,7 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 import ToDo from './Elapsify'
 import HomeworkTracker from "./HomeworkTracker";
+import MessageCenter from "./MessageCenter";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 function Final() {
@@ -17,6 +18,7 @@ function Final() {
               <h3 className={"home"}>Carpe</h3>
               <Tab>Elapsify</Tab>
               <Tab style={{whiteSpace: 'nowrap'}}>Homework Tracker</Tab>
+                <Tab style={{whiteSpace: 'nowrap'}}>Message Center</Tab>
             </TabList>
 
             <TabPanel>
@@ -24,6 +26,9 @@ function Final() {
             </TabPanel>
             <TabPanel>
               <HomeworkTracker />
+            </TabPanel>
+            <TabPanel>
+              <MessageCenter />
             </TabPanel>
           </Tabs>
         </div>
