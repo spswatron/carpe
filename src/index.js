@@ -18,7 +18,7 @@ function Final() {
               <h3 className={"home"}>Carpe</h3>
               <Tab>Elapsify</Tab>
               <Tab style={{whiteSpace: 'nowrap'}}>Homework Tracker</Tab>
-                <Tab style={{whiteSpace: 'nowrap'}}>Message Center</Tab>
+                <Tab style={{whiteSpace: 'nowrap'}}>Notes To Self</Tab>
             </TabList>
 
             <TabPanel>
