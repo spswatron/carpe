@@ -24,9 +24,9 @@ class Title extends React.PureComponent {
 class Input extends React.Component {
   render() {
     return(
-      <div className="row">
+      <div className="homework-input row">
       <input type="text"
-             className={"col"}
+             className={"to-do col"}
                placeholder="Todo..."
                aria-label="Todo"
                aria-describedby="basic-addon2"
@@ -39,9 +39,19 @@ class Input extends React.Component {
                   date = {this.props.date}
                   dateChange = {this.props.dateChange}
               />
-      <button className="show">
-              Weekly
-      </button>
+      <div className={"show"} style={{display: 'flex', alignItems:'center', height: '30px'}}>
+                <input style={{marginLeft: '7px'}}
+                    className="col form-check-input"
+                       type="checkbox"
+                       // value={this.props.checked}
+                       // onChange={() => this.props.checkChange()}
+                       id="defaultCheck1"/>
+                    <button className={"show"}>
+                    <label style={{marginLeft: '3px'}} className="col weekly" htmlFor="defaultCheck1">
+                       Weekly
+                    </label>
+                    </button>
+      </div>
       </div>
     );
   }
@@ -137,9 +147,13 @@ class DateFind extends React.Component {
 }
 
 function Finish (props) {
+    let color = "black"
+    if(props.cross === "cross"){
+        color = "gray"
+    }
     return(
         <td>
-            <button type="button" className="finished" onClick={() => props.finish(props.i)}>
+            <button type="button" className={"finished " + color} onClick={() => props.finish(props.i)}>
                 finished
             </button>
         </td>
@@ -170,6 +184,7 @@ class Entry extends React.Component {
               <Finish
                   finish={this.props.finished}
                   i={this.props.i}
+                  cross = {this.props.class}
               />
               <Clear
                   clear={this.props.clear}
@@ -388,9 +403,10 @@ class HomeworkTracker extends React.Component {
 
   render() {
     return (
-        <div style ={{margin: '0 auto', padding: 20}}>
+        <div className="container">
+            <div>
           <Title />
-          <div style ={{textAlign: 'left', alignSelf: 'center'}}>
+          <div style ={{textAlign: 'left', alignSelf: 'center', marginTop: 0}}>
               <title>
                   homework log
               </title>
@@ -435,6 +451,7 @@ class HomeworkTracker extends React.Component {
           <MyCalendar
               eventList = {this.state.eventList}
           />
+          </div>
         </div>
     );
   }

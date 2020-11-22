@@ -14,22 +14,49 @@ body {
 }
 
 .react-tabs__tab-list {
-  height: calc(100vh - 5em);
+  padding: 0;
+  height: calc(100vh);
   background-color: whitesmoke;
-  padding: 2.5em 2em;
+}
+
+.react-tabs__tab-panel.react-tabs__tab-panel--selected {
+  width: 100%;
+}
+
+.react-tabs__tab.react-tabs__tab--selected {
+  /*color: gray;*/
+  background-color: rgba(55, 53, 47, 0.12);
 }
 
 .react-tabs__tab {
-  padding: 3px;
+  padding: 3px 3rem;
+}
+
+.react-tabs__tab-list h3{
+  padding: 3px 3rem;
+  padding-top: 3rem;
 }
 
 .react-tabs__tab:hover {
   cursor: pointer;
 }
 
+.react-tabs__tab:hover {
+  cursor: pointer;
+}
+
+.homework-input {
+  margin-top: 12px;
+  max-width: 750px;
+}
+
 ul {
   list-style: none;
   margin: 0;
+}
+
+input[type="text" i] {
+    padding: 3px;
 }
 
 .cross {
@@ -41,7 +68,9 @@ ul {
 }
 
 .due-date {
+  max-width: 6.5rem;
   height: 30px;
+  /*padding-left: 10em;*/
 }
 
 .submit, .finished, .clear, .show {
@@ -49,19 +78,42 @@ ul {
   width: 100%;
   padding: 5px;
   border-radius: 5px;
-  border: 1px solid grey;
-  color: gray;
+  border: 1px solid black;
+  color: black;
   max-width: 10rem;
   font-family: 'Open Sans', sans-serif;
 }
 
-.finished:hover, .clear:hover, .submit:hover {
-  color: black;
-  border-color: black;
+.show {
+  border: none;
+  padding-left: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  max-width: 5rem;
 }
 
-.show {
-  width: 4rem;
+.to-do {
+  margin-right: -1px;
+}
+
+.container {
+  background: none;
+  height: calc(100% - 3rem);
+  width: 100%;
+  display: flex;
+  /*justify-content: center;*/
+  /*align-items: center;*/
+  padding-top: 3rem;
+  padding-left: 2rem;
+}
+
+.finished:hover, .clear:hover, .submit:hover {
+  color: grey;
+  border-color: grey;
+}
+
+.weekly {
+  text-align: left;
 }
 
 .col input {
@@ -85,7 +137,15 @@ button:focus {
   outline: none;
 }
 
+.gray {
+  color: gray;
+  border: 1px solid gray;
+  /*background-color: gray;*/
+}
 
+.gray:hover {
+  cursor: default;
+}
 
 .submit {
   max-width: 4rem;

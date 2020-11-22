@@ -80,9 +80,13 @@ class Submit extends React.Component {
 }
 
 function Finish (props) {
+    let color = "black"
+    if(props.cross === "cross"){
+        color = "gray"
+    }
     return(
         <td>
-            <button type="button" className="finished" onClick={() => props.finish(props.i)}>
+            <button type="button" className={"finished " + color} onClick={() => props.finish(props.i)}>
                 finished
             </button>
         </td>
@@ -123,6 +127,7 @@ class Entry extends React.Component {
               <Finish
                   finish={this.props.finished}
                   i={this.props.i}
+                  cross = {this.props.class}
               />
               <Clear
                   clear={this.props.clear}
@@ -330,7 +335,8 @@ class ToDo extends React.Component {
 
   render(){
     return(
-      <div style={{padding: 20}}>
+      <div className="container">
+          <div>
          {/*<Title*/}
          {/*    blurTitle={this.blurTitle.bind(this)}*/}
          {/*    curTime = {this.state.curTime}*/}
@@ -352,7 +358,7 @@ class ToDo extends React.Component {
             stopTimes={this.state.stopTimes}
           />
         </table>
-          <div className="container" style={{marginLeft: 0, marginTop: 0}} >
+          <div style={{marginLeft: 0, marginTop: 0}} >
               <div className="row" style={{width: 500, padding: 0, alignContent: 'left', alignSelf: 'left', marginTop: '12px'}}>
                   <div className="col" style={{paddingLeft: 0}}>
                       <Input
@@ -372,6 +378,7 @@ class ToDo extends React.Component {
         <Submit
           submitted = {() => this.handleSubmit()}
         />
+        </div>
       </div>
     )
   }
