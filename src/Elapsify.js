@@ -190,6 +190,7 @@ class ToDo extends React.Component {
   }
 
   componentDidMount() {
+      localStorage.clear()
       setInterval(() => {
         const newDate = new Date()
         // if(this.state.checked && !(this.state.curTime.getDay() === this.state.date)) {

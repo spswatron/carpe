@@ -375,6 +375,7 @@ class HomeworkTracker extends React.Component {
   }
 
   clear(i) {
+      this.finished(i);
       const new_events = eventRemove(this.state.eventList, i)
       const new_entries = removeIndex(this.state.todos, i)
       const new_actives = maintainActive(this.state.activeStarts, this.state.dues[i])
@@ -469,7 +470,7 @@ function removeIndex(list, j){
 function maintainActive(list, item){
     let i;
     for (i = 0; i < list.length; i++) {
-        if(i % 2 ===0){
+        if(i % 2 === 0){
             if(list[i].valueOf() ===item.valueOf()){
                 list.splice(i, 2)
             }
