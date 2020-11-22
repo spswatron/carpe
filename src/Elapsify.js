@@ -37,13 +37,13 @@ class Title extends React.Component {
 class MorningRoutine extends React.Component {
     render() {
         return (
-            <div className="form-check" style={{display: 'flex', alignItems:'center', height: '30px'}}>
+            <div className="morning-routine" style={{display: 'flex', alignItems:'center', height: '30px'}}>
                 <input style={{marginLeft: '7px'}}
                     className="form-check-input"
                        type="checkbox" value={this.props.checked}
                        onChange={() => this.props.checkChange()}
                        id="defaultCheck1"/>
-                    <label style={{marginLeft: '3px'}} className="form-check-label" htmlFor="defaultCheck1">
+                    <label style={{marginLeft: '3px'}} htmlFor="defaultCheck1">
                         morning routine
                     </label>
             </div>
@@ -85,21 +85,21 @@ function Finish (props) {
         color = "gray"
     }
     return(
-        <td>
+        <div className="left col">
             <button type="button" className={"finished " + color} onClick={() => props.finish(props.i)}>
                 finished
             </button>
-        </td>
+        </div>
     );
 }
 
 function Clear(props) {
     return(
-        <td>
+        <div className={"col"}>
             <button type="button" className = "clear" onClick={() => props.clear(props.i)}>
                 clear
             </button>
-        </td>
+        </div>
     )
 }
 
@@ -117,13 +117,14 @@ class Entry extends React.Component {
         return(
             <>
                 {/*<hr/>*/}
-            <tr key={this.props.i}>
-              <td style = {{width: 200}} className={this.props.class}>
+            <div className="list row" key={this.props.i}>
+              <div style = {{width: 200}} className={this.props.class + " col"}>
                 {this.props.content}
-              </td>
-              <td>
+              </div>
+              <div className="col" >
                   {timeString} elapsed
-              </td>
+              </div>
+              <div className="col" style={{flexDirection:'row'}}>
               <Finish
                   finish={this.props.finished}
                   i={this.props.i}
@@ -133,7 +134,8 @@ class Entry extends React.Component {
                   clear={this.props.clear}
                   i={this.props.i}
               />
-            </tr>
+              </div>
+            </div>
                 </>
         );
     }
@@ -343,10 +345,9 @@ class ToDo extends React.Component {
          {/*    activeStarts = {this.state.activeStarts}*/}
          {/*/>*/}
          <NewTitle />
-         <h3 style={{width: 500, textAlign: "center"}}>
+         <h3 className="title" style={{width: 500, textAlign: "center"}}>
                   Elapsify
          </h3>
-         <table style={{width: 500}} className="table">
           <List
             classes = {this.state.classes}
             curTime = {this.state.curTime}
@@ -357,9 +358,8 @@ class ToDo extends React.Component {
             startTimes={this.state.startTimes}
             stopTimes={this.state.stopTimes}
           />
-        </table>
           <div style={{marginLeft: 0, marginTop: 0}} >
-              <div className="row" style={{width: 500, padding: 0, alignContent: 'left', alignSelf: 'left', marginTop: '12px'}}>
+              <div className="row" style={{ padding: 0, alignContent: 'left', alignSelf: 'left', marginTop: '12px'}}>
                   <div className="col" style={{paddingLeft: 0}}>
                       <Input
                           typed = {this.state.content}
@@ -367,7 +367,7 @@ class ToDo extends React.Component {
                           enterCheck = {this.enterCheck.bind(this)}
                       />
                   </div>
-                  <div className="col" style={{maxWidth: 160, paddingRight: 10, verticalAlign: 'sub'}}>
+                  <div className="routine" style={{maxWidth: 160, paddingRight: 10, verticalAlign: 'sub'}}>
                       <MorningRoutine
                           checked= {this.state.checked}
                           checkChange={this.checkChange.bind(this)}

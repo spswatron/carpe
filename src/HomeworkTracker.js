@@ -152,21 +152,21 @@ function Finish (props) {
         color = "gray"
     }
     return(
-        <td>
+        <div className={"left col"}>
             <button type="button" className={"finished " + color} onClick={() => props.finish(props.i)}>
                 finished
             </button>
-        </td>
+        </div>
     );
 }
 
 function Clear(props) {
     return(
-        <td>
+        <div className={"col"}>
             <button type="button" className = "clear" onClick={() => props.clear(props.i)}>
                 clear
             </button>
-        </td>
+        </div>
     )
 }
 
@@ -174,13 +174,14 @@ class Entry extends React.Component {
     render() {
         const timeString = timeConvert(new Date(this.props.due).toString())
         return(
-            <tr>
-              <td className={this.props.class}>
+            <div className={"list row"}>
+              <div className={this.props.class + " col"}>
                 {this.props.task}
-              </td>
-              <td>
+              </div>
+              <div className={"col"}>
                   {timeString}
-              </td>
+              </div>
+              <div className={"col"} style={{flexDirection: 'row', flex: 0.7}}>
               <Finish
                   finish={this.props.finished}
                   i={this.props.i}
@@ -190,7 +191,8 @@ class Entry extends React.Component {
                   clear={this.props.clear}
                   i={this.props.i}
               />
-            </tr>
+              </div>
+            </div>
         );
     }
 }
@@ -198,7 +200,7 @@ class Entry extends React.Component {
 class Submit extends React.Component {
   render() {
     return(
-      <button type="button" style ={{marginBottom: 15, marginRight: 15, display: 'inline-block'}}
+      <button type="button" style ={{marginBottom: 15, marginRight: 15, display: 'inline-block', flexWrap: "wrap"}}
               class="submit" value="Submit" onClick={() => this.props.submitted()}>
         Submit
       </button>
@@ -222,13 +224,13 @@ class List extends React.Component {
 
   render() {
     return(
-      <React.Fragment>
+      <div className={"row"} style={{display: 'flex', width: '750px'}}>
       {this.props.ranger.map(j => {
         return (
           this.renderEntry(j)
         );
       })}
-      </React.Fragment>
+      </div>
     );
   }
 }
@@ -410,10 +412,9 @@ class HomeworkTracker extends React.Component {
               <title>
                   homework log
               </title>
-              <h3 style={{width: 750, textAlign: "center"}}>
+              <h3 className="title" style={{width: 750, textAlign: "center"}}>
                   Homework Tracker
               </h3>
-              <table style={{width: 750}} className="table">
                   <List
                     todos={this.state.todos}
                     dueDates={this.state.dues}
@@ -422,7 +423,6 @@ class HomeworkTracker extends React.Component {
                     finished = {this.finished.bind(this)}
                     clear= {this.clear.bind(this)}
                   />
-              </table>
               <Input
                 typed = {this.state.content}
                 changes= {this.handleChange.bind(this)}

@@ -56,7 +56,8 @@ ul {
 }
 
 input[type="text" i] {
-    padding: 3px;
+    padding: 6px 10px;
+    border-radius: 5px;
 }
 
 .cross {
@@ -67,9 +68,18 @@ input[type="text" i] {
   z-index: 10!important;
 }
 
+.home {
+  cursor: default;
+}
+
+.title {
+  font-size: 2rem;
+  margin: 1rem;
+}
+
 .due-date {
   text-align: center;
-  max-width: 8.5rem;
+  max-width: 13rem;
   height: 30px;
   /*padding-left: 10em;*/
 }
@@ -91,10 +101,22 @@ input[type="text" i] {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   max-width: 5rem;
+  align-self: center;
+}
+
+.morning-routine {
+  justify-self: center;
+}
+
+.routine {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
 }
 
 .to-do {
-  margin-right: -1px;
+  margin-right: -6px;
 }
 
 .container {
@@ -108,6 +130,15 @@ input[type="text" i] {
   padding-left: 2rem;
 }
 
+.left.col {
+  margin-right: 10px;
+}
+
+.list.row {
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
 .finished:hover, .clear:hover, .submit:hover {
   color: grey;
   border-color: grey;
@@ -118,16 +149,14 @@ input[type="text" i] {
 }
 
 .col input {
-  height: 100%;
+  height: 2rem;
   margin: 0;
 }
 
-input {
+button, input {
   font-family: 'Open Sans', sans-serif;
-}
-
-button {
-  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem;
+  border-width: 1px;
 }
 
 button:hover {
@@ -137,6 +166,11 @@ button:hover {
 button:focus {
   outline: none;
 }
+
+/*.black {*/
+/*  color: gray;*/
+/*  border: 1px solid gray;*/
+/*}*/
 
 .gray {
   color: gray;
@@ -149,7 +183,7 @@ button:focus {
 }
 
 .submit {
-  max-width: 4rem;
+  max-width: 5rem;
 }
 
 .row {

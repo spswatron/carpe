@@ -14,7 +14,7 @@ function Final() {
             </style>
             <Tabs>
             <TabList>
-              <h3>Carpe</h3>
+              <h3 className={"home"}>Carpe</h3>
               <Tab>Elapsify</Tab>
               <Tab style={{whiteSpace: 'nowrap'}}>Homework Tracker</Tab>
             </TabList>
