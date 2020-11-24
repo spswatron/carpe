@@ -91,7 +91,7 @@ class CheckValue extends React.Component {
                        type="checkbox" value={this.props.checked}
                        onChange={() => this.props.checkChange()}
                        id="defaultCheck1"/>
-                    <label className="form-check-label" htmlFor="defaultCheck1" style ={{display: 'inline-block'}}>
+                    <label className="form-check-label" style ={{display: 'inline-block'}}>
                         {this.props.task}
                     </label>
             </div>

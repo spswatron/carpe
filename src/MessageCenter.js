@@ -79,9 +79,19 @@ class TextEditor extends React.Component {
               handleEditorChange = {this.handleEditorChange.bind(this)}
           />
            <div className={"note"}>
-               <div style={{display: 'flex'}}>
+               <div style={{display: 'flex', alignItems: 'center'}}>
                <a href={newLink} download={fileName}><button className={"submit"} style ={{maxWidth: '6rem', marginRight: '1rem'}}>Download</button></a>
                {/*<a href={newLink} download><button className={"submit"} style ={{minWidth: '4rem'}}>Save</button></a>*/}
+               <div className="morning-routine" style={{display: 'flex', alignItems:'center', height: '30px'}}>
+                <input style={{marginLeft: '7px'}}
+                    className="form-check-input"
+                       type="checkbox" value={this.props.checked}
+                       // onChange={() => this.props.checkChange()}
+                       id="defaultCheck1"/>
+                    <label style={{marginLeft: '3px'}} htmlFor="defaultCheck1">
+                        show logs
+                    </label>
+                </div>
                </div>
            </div>
             </div>
