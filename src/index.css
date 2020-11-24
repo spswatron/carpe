@@ -110,6 +110,10 @@ input[type="text" i] {
   justify-self: center;
 }
 
+a:-webkit-any-link {
+  text-decoration: none;
+}
+
 .routine {
   display: flex;
   align-items: center;
@@ -130,6 +134,17 @@ input[type="text" i] {
   /*align-items: center;*/
   padding-top: 3rem;
   padding-left: 2rem;
+}
+
+.note {
+  margin-top: 20px;
+  width: 582px;
+  display: flex;
+  /*justify-content: center;*/
+}
+
+blockquote {
+   background: whitesmoke!important;
 }
 
 .left.col {
