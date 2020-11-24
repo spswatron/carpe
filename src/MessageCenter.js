@@ -33,7 +33,7 @@ class TextEditor extends React.Component {
              'insertdatetime media table paste code help wordcount'
            ],
            toolbar:
-             'undo redo | formatselect | bold italic forecolor backcolor | \
+             'undo redo | formatselect | bold italic forecolor backcolor strikethrough | \
              alignleft aligncenter alignright alignjustify | \
              bullist numlist outdent indent| help'
          }}
@@ -71,7 +71,7 @@ class TextEditor extends React.Component {
          <div>
          <NewTitle />
 
-         <h3 className="title" style={{width: 500, textAlign: "center"}}>
+         <h3 className="title" style={{width: 580, textAlign: "center"}}>
                   Notes To Self
          </h3>
           <TextEditor
