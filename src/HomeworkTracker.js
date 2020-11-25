@@ -369,12 +369,17 @@ class HomeworkTracker extends React.Component {
   }
 
   clear(i) {
-      this.finished(i);
-      const new_events = eventRemove(this.state.eventList, i)
-      const new_entries = removeIndex(this.state.todos, i)
-      const new_dues = removeIndex(this.state.dues, i)
-      const new_classes = removeIndex(this.state.classes, i)
-      const new_ranger = removeIndex(this.state.ranger, this.state.ranger.length - 1)
+      console.log(this.state.eventList)
+      console.log(i)
+      const new_events = this.state.eventList.filter(j => j.id !== i)
+      const new_entries = this.state.todos
+      new_entries.slice(i, 1)
+      const new_dues = this.state.dues
+      new_dues.slice(i, 1)
+      const new_classes = this.state.classes
+      new_classes.slice(i, 1)
+      const new_ranger = this.state.ranger
+      new_ranger.pop()
       this.setState({
           todos: new_entries,
           dues: new_dues,
@@ -522,7 +527,7 @@ function toEvent(state, date) {
    let dt = new Date(date.getTime());
    dt.setHours(dt.getHours() - 2);
    return {
-       id: state.ranger.length,
+       id: state.todos.length,
        title: state.content,
        start: dt,
        end: date
