@@ -373,11 +373,14 @@ class HomeworkTracker extends React.Component {
       console.log(i)
       const new_events = this.state.eventList.filter(j => j.id !== i)
       const new_entries = this.state.todos
-      new_entries.slice(i, 1)
+      console.log(new_entries)
+      console.log(i)
+      new_entries.splice(i, 1)
+      console.log(new_entries)
       const new_dues = this.state.dues
-      new_dues.slice(i, 1)
+      new_dues.splice(i, 1)
       const new_classes = this.state.classes
-      new_classes.slice(i, 1)
+      new_classes.splice(i, 1)
       const new_ranger = this.state.ranger
       new_ranger.pop()
       this.setState({
