@@ -269,7 +269,6 @@ class HomeworkTracker extends React.Component {
       date: newDate,
       todos: ls.get('todos') || [],
       dues: dParse(ls.get('dues')) || [],
-      activeStarts: dParse(ls.get('ht_activeStarts')) || [],
       ranger: ls.get('ht_ranger') || [],
       classes: ls.get('ht_classes') || [],
       chosen: 'input time',
@@ -293,7 +292,6 @@ class HomeworkTracker extends React.Component {
         }
 
         const newDues = this.state.dues.concat(this.state.date)
-        const newActives = this.state.activeStarts.concat(this.state.date).concat(this.state.content)
         const newClasses = this.state.classes.concat('un-crossed')
         let newRanger = []
         if (this.state.checked){
@@ -307,7 +305,6 @@ class HomeworkTracker extends React.Component {
             todos: newList,
             content: "",
             dues: newDues,
-            activeStarts: newActives,
             classes: newClasses,
             ranger: newRanger,
             eventList: newEvents,
@@ -315,7 +312,6 @@ class HomeworkTracker extends React.Component {
         });
         ls.set('todos', newList)
         ls.set('dues', newDues)
-        ls.set('ht_activeStarts', newActives)
         ls.set('ht_classes', newClasses)
         ls.set('ht_ranger', newRanger)
         ls.set('eventList', newEvents)
@@ -366,34 +362,28 @@ class HomeworkTracker extends React.Component {
   finished(i) {
      const new_list = this.state.ranger.map(
               j => ((i === j) ? 'cross' : this.state.classes[j]))
-     const new_actives = maintainActive(this.state.activeStarts, this.state.dues[i])
      this.setState({
          classes: new_list,
-         activeStarts: new_actives,
       });
      ls.set('ht_classes', new_list)
-     ls.set('ht_activeStarts', new_actives)
   }
 
   clear(i) {
       this.finished(i);
       const new_events = eventRemove(this.state.eventList, i)
       const new_entries = removeIndex(this.state.todos, i)
-      const new_actives = maintainActive(this.state.activeStarts, this.state.dues[i])
       const new_dues = removeIndex(this.state.dues, i)
       const new_classes = removeIndex(this.state.classes, i)
       const new_ranger = removeIndex(this.state.ranger, this.state.ranger.length - 1)
       this.setState({
           todos: new_entries,
           dues: new_dues,
-          activeStarts: new_actives,
           classes: new_classes,
           ranger: new_ranger,
           eventList: new_events
       })
       ls.set('todos', new_entries)
       ls.set('dues', new_dues)
-      ls.set('ht_tarts', new_actives)
       ls.set('ht_classes', new_classes)
       ls.set('ht_ranger', new_ranger)
       ls.set('eventList', new_events)
@@ -472,7 +462,7 @@ function maintainActive(list, item){
     let i;
     for (i = 0; i < list.length; i++) {
         if(i % 2 === 0){
-            if(list[i].valueOf() ===item.valueOf()){
+            if(list[i].valueOf() === item.valueOf()){
                 list.splice(i, 2)
             }
         }
